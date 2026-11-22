@@ -10,12 +10,15 @@ function canRotate(card) {
 document.querySelectorAll('[data-preview-images]').forEach((preview, order) => {
     const urls = preview.dataset.previewImages.split(' ');
     const card = preview.closest('.app-card');
-    let visible = preview.querySelector('img');
-    let incoming = new Image();
-    let index = 0;
+    const cover = preview.querySelector('.project-cover');
+    let visible = cover;
+    let incoming = preview.querySelector('img[hidden]');
+    let index = -1;
 
-    incoming.alt = '';
-    preview.append(incoming);
+    const spare = new Image();
+    spare.alt = '';
+    preview.append(spare);
+    incoming.hidden = false;
 
     async function rotate() {
         if (canRotate(card)) {
@@ -26,7 +29,7 @@ document.querySelectorAll('[data-preview-images]').forEach((preview, order) => {
                 if (canRotate(card)) {
                     incoming.classList.add('is-visible');
                     visible.classList.remove('is-visible');
-                    [visible, incoming] = [incoming, visible];
+                    [visible, incoming] = [incoming, visible === cover ? spare : visible];
                 }
             } catch {
                 // Keep the last good frame on screen until another image loads.
