@@ -818,3 +818,20 @@ main > .cover-title { margin-bottom: 1rem; max-height: 17rem; border-radius: var
 @media (prefers-reduced-motion: reduce) {
     .has-cover .project-cover { transition: none; }
 }
+
+.bitblast-play .project-cover {
+    margin-bottom: 1rem;
+    max-height: 24rem;
+    border: 1px solid var(--glass-rim);
+    border-radius: var(--glass-radius);
+}
+.bitblast-play h3 { margin-top: 1.4rem; }
+.game-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: .65rem;
+    margin: .8rem 0 0;
+}
+.game-controls > div { padding: .65rem .8rem; border: 1px solid var(--line); border-radius: .65rem; }
+.game-controls dd { margin: .4rem 0 0; color: var(--muted); overflow-wrap: anywhere; }
+.game-controls kbd { display: inline-block; padding: .05rem .4rem; border: 1px solid var(--glass-rim); border-radius: .25rem; }

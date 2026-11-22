@@ -24,17 +24,32 @@
     <main id="main" class="wrap">
         <div class="page-lead">
             <a class="back" href="apps.html">Back to Apps</a>
-            <p class="eyebrow">C / Team game project · 2026</p>
+            <p class="eyebrow">C++ / Team game project · 2026</p>
             <h1>BitBlast: The Artillery War</h1>
             <div class="page-lead-summary">
                 <p class="intro">Tank movement, terrain collision, and missile behavior for an artillery game.</p>
                 <div class="actions app-actions">
                     <button class="button primary" type="button" disabled>Play Now</button>
-                    <span class="play-status">Browser build coming later</span>
+                    <span class="play-status">Browser version pending</span>
                 </div>
             </div>
         </div>
-        <div class="project-cover cover-title cover-bitblast" aria-hidden="true"><span>BitBlast</span></div>
+        <section class="section reading bitblast-play" id="game" aria-labelledby="game-title">
+            <h2 id="game-title">Game display</h2>
+            <div class="project-cover cover-title cover-bitblast" aria-hidden="true"><span>BitBlast</span></div>
+            <p>The browser build is pending. These controls apply to the original Windows version.</p>
+            <h3 id="controls-title">Controls</h3>
+            <dl class="game-controls" aria-labelledby="controls-title">
+                <div><dt><kbd>A</kbd> <kbd>D</kbd></dt><dd>Move left and right</dd></div>
+                <div><dt><kbd>W</kbd> <kbd>S</kbd></dt><dd>Raise and lower the turret</dd></div>
+                <div><dt><kbd>Q</kbd> <kbd>E</kbd></dt><dd>Decrease and increase shot power</dd></div>
+                <div><dt><kbd>Space</kbd></dt><dd>Fire the selected missile</dd></div>
+                <div><dt><kbd>Left Shift</kbd></dt><dd>Rocket jump</dd></div>
+                <div><dt><kbd>1</kbd>–<kbd>5</kbd></dt><dd>Select Standard, Cluster, Sticky Bomb, Rain, or Bounce</dd></div>
+                <div><dt><kbd>T</kbd> <kbd>Enter</kbd></dt><dd>Open multiplayer chat and send a message</dd></div>
+                <div><dt><kbd>Esc</kbd></dt><dd>Close chat or open the in-game menu</dd></div>
+            </dl>
+        </section>
         <section class="section reading" aria-labelledby="contribution">
             <h2 id="contribution">My contribution</h2>
             <p>I used axis-aligned bounding boxes for collision checks and a state machine for idle, movement, and jumping. I also implemented per-weapon ammo tracking and the bounce missile.</p>
