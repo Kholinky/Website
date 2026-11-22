@@ -652,3 +652,28 @@ main > .reading:last-child, main > .contact:last-child { margin-bottom: clamp(1.
     .hero-showcase-label { font-size: .75rem; }
     .other-work-content { padding-inline: .55rem; }
 }
+
+.hero-slide-backdrop {
+    position: absolute;
+    inset: -1.25rem;
+    background: var(--preview-image) center / cover no-repeat;
+    filter: grayscale(1) blur(18px) brightness(.48);
+    pointer-events: none;
+}
+.hero-slide img { position: relative; }
+.hero-showcase-label { z-index: 1; }
+
+.engineering-nav { margin-bottom: 1rem; }
+.engineering-case p + p { margin-top: .65rem; }
+.engineering-gallery { margin-top: 1.25rem; }
+.engineering-gallery a {
+    display: grid;
+    place-items: center;
+    min-width: 0;
+    min-height: 0;
+    padding: .5rem;
+    border: 1px solid var(--line);
+    background: #151515;
+}
+.engineering-gallery a:hover { border-color: var(--accent); }
+.engineering-gallery img { width: 100%; max-height: 24rem; object-fit: contain; }
