@@ -1,6 +1,4 @@
-function toggleMenu() {
-  const menu = document.querySelector('.menu-links');
-  const icon = document.querySelector('.hamburger-icon');
-  menu.classList.toggle('open');
-  icon.classList.toggle('open');
-}
+const resume = document.querySelector('#resume');
+const openResume = document.querySelector('#open-resume');
+
+openResume.addEventListener('click', () => resume.showModal());

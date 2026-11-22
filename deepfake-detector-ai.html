@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#222326">
+    <meta name="description" content="Wesley Tan Yan Long’s software and game development portfolio.">
+    <title>Is It Real | Wesley Tan Yan Long</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <nav class="wrap nav" aria-label="Main navigation">
+            <a class="brand" href="index.html"><span class="monogram" aria-hidden="true">W</span> Wesley Tan</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html" aria-current="true">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main" class="wrap">
+        <header class="page-lead">
+            <a class="back" href="apps.html">Back to Apps</a>
+            <p class="eyebrow">Alameda Hacks / Python and Streamlit</p>
+            <h1>Is It Real</h1>
+            <div class="page-lead-summary">
+                <p class="intro">A deepfake detector that explains why it flags an image and accepts user feedback.</p>
+                <div class="actions app-actions">
+                    <a class="button primary" href="https://devpost.com/software/deepfake-detector-ai">View on Devpost</a>
+                </div>
+            </div>
+        </header>
+        <section class="section reading" aria-labelledby="overview">
+            <h2 id="overview">About the app</h2>
+            <p>The app combines machine learning with computer vision checks for signs of manipulation, including unusual compression patterns and inconsistent lighting. The Streamlit interface shows the evidence behind a verdict and lets users submit corrections. The project also supports sampling frames from video.</p>
+        </section>
+        <section class="section" aria-labelledby="features">
+            <h2 id="features">How the detector works</h2>
+            <div class="grid project-grid">
+                <article class="card card-body">
+                    <h3>Analyze an image or video</h3>
+                    <p class="detail">Upload an image or video in Streamlit. For video, the app samples frames for analysis.</p>
+                </article>
+                <article class="card card-body">
+                    <h3>Explain the verdict</h3>
+                    <p class="detail">The detector combines model predictions with forensic cues such as compression artifacts, unusual frequency patterns, and inconsistent lighting. The interface shows the evidence and confidence behind a result.</p>
+                </article>
+                <article class="card card-body">
+                    <h3>Learn from feedback</h3>
+                    <p class="detail">Users can mark a verdict as correct or wrong. The prototype uses that feedback to update its model and stores versioned checkpoints on Hugging Face.</p>
+                </article>
+            </div>
+        </section>
+        <section class="section reading" aria-labelledby="demo">
+            <h2 id="demo">Demo video</h2>
+            <iframe class="app-video" src="https://www.youtube-nocookie.com/embed/JaeSJxNDYH8" title="Is It Real demo" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
+            <p><a href="https://www.youtube.com/watch?v=JaeSJxNDYH8">Watch on YouTube</a></p>
+        </section>
+        <section class="section" aria-labelledby="screenshots">
+            <h2 id="screenshots">Screenshots</h2>
+            <div class="grid project-grid screenshot-grid">
+                <a href="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/148/716/datas/gallery.jpg"><img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/148/716/datas/gallery.jpg" alt="Is It Real screenshot 1" loading="lazy" decoding="async"></a>
+                <a href="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/148/715/datas/gallery.jpg"><img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/148/715/datas/gallery.jpg" alt="Is It Real screenshot 2" loading="lazy" decoding="async"></a>
+                <a href="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/148/714/datas/gallery.jpg"><img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/004/148/714/datas/gallery.jpg" alt="Is It Real screenshot 3" loading="lazy" decoding="async"></a>
+            </div>
+        </section>
+    </main>
+    <footer class="wrap footer">
+        <small>© 2026 Wesley Tan Yan Long</small>
+        <div class="actions">
+            <a href="https://github.com/Kholinky">GitHub</a>
+            <a href="https://www.linkedin.com/in/wesleychaimongkhol/">LinkedIn</a>
+        </div>
+    </footer>
+</body>
+</html>
