@@ -18,7 +18,7 @@ body {
     background: radial-gradient(ellipse 62rem 34rem at 80% 7%, #505156, transparent 74%), var(--background);
     color: var(--ink);
 }
-main { flex: 1; }
+main { flex: 1; min-inline-size: 0; }
 a { color: inherit; text-underline-offset: .25em; }
 a:hover { color: var(--accent); }
 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
@@ -161,6 +161,8 @@ body:has(.resume[open]) { overflow: hidden; }
 .resume {
     width: min(49rem, calc(100% - 2rem));
     max-height: min(85dvh, 53rem);
+    overflow: auto;
+    overscroll-behavior: contain;
     padding: 0;
     border: 1px solid #686a71;
     border-radius: .45rem;
@@ -172,6 +174,7 @@ body:has(.resume[open]) { overflow: hidden; }
 .resume-header {
     position: sticky;
     top: 0;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -250,7 +253,7 @@ body:has(.resume[open]) { overflow: hidden; }
 .app-card-body { display: flex; flex: 1; flex-direction: column; gap: .55rem; padding: 1rem 1.2rem 1.2rem; border-top: 1px solid var(--line); }
 .app-card-body .card-title { margin: 0; }
 .app-actions { margin-top: 1.25rem; }
-.app-video { display: block; width: min(100%, 44rem); aspect-ratio: 16 / 9; border: 1px solid var(--line); border-radius: .8rem; background: #000; margin-bottom: .65rem; }
+.app-video { display: block; width: min(100%, 44rem); height: auto; aspect-ratio: 16 / 9; border: 1px solid var(--line); border-radius: .8rem; background: #000; margin-bottom: .65rem; }
 .screenshot-grid a { display: grid; place-items: center; min-height: 0; padding: .6rem; border: 1px solid var(--line); border-radius: .8rem; background: var(--surface); }
 .screenshot-grid a:hover { border-color: var(--accent); }
 .screenshot-grid img { max-height: 18rem; width: 100%; object-fit: contain; }
@@ -299,6 +302,7 @@ body { background: var(--background); }
 .hero {
     position: relative;
     isolation: isolate;
+    container-type: inline-size;
     padding: clamp(1.1rem, 2.7vw, 2.25rem) clamp(1rem, 3.1vw, 2.8rem) clamp(1.5rem, 3.5vw, 3rem);
     margin-block: clamp(1rem, 2.7vw, 2.25rem);
     border: 1px solid var(--line);
@@ -307,12 +311,12 @@ body { background: var(--background); }
 .hero h1 {
     position: relative;
     z-index: 1;
-    font-size: clamp(2rem, 8.45vw, 7.35rem);
+    font-size: clamp(2rem, min(8vw, 8.5cqi), 7rem);
     text-transform: uppercase;
     font-weight: 850;
     letter-spacing: -.08em;
-    white-space: nowrap;
-    line-height: .9;
+    text-wrap: balance;
+    line-height: .98;
 }
 .hero h1 span { color: var(--ink); }
 .hero-stage {
@@ -331,6 +335,7 @@ body { background: var(--background); }
     display: grid;
     justify-items: center;
     width: min(100%, 40rem);
+    min-width: 0;
     margin-inline: auto;
 }
 .hero-device {
@@ -357,6 +362,8 @@ body { background: var(--background); }
     position: relative;
     grid-area: 1 / 1;
     display: grid;
+    min-width: 0;
+    min-height: 0;
     aspect-ratio: 16 / 9;
     place-items: center;
     overflow: hidden;
@@ -376,8 +383,9 @@ body { background: var(--background); }
     filter: grayscale(1);
 }
 .hero-slide-title {
-    padding: 1rem 1rem 2.6rem;
-    font-size: clamp(1.6rem, 5vw, 4rem);
+    padding: .6rem .8rem 2.5rem;
+    font-size: clamp(1.125rem, 5cqi, 3.85rem);
+    overflow-wrap: anywhere;
     line-height: 1;
     font-weight: 800;
     letter-spacing: -.04em;
@@ -385,7 +393,8 @@ body { background: var(--background); }
 .hero-showcase-label {
     position: absolute;
     inset: auto 0 0;
-    padding: .4rem .6rem;
+    padding: .35rem .5rem;
+    overflow-wrap: anywhere;
     background: #141414eb;
     color: var(--ink);
     font-size: .875rem;
@@ -489,7 +498,8 @@ main > .reading:last-child, main > .contact:last-child { margin-bottom: clamp(1.
     .hero-discipline br { display: none; }
 }
 @media (max-width: 36rem) {
-    .hero h1 { max-width: 9ch; white-space: normal; font-size: clamp(2.6rem, 11vw, 4rem); }
+    .hero h1 { font-size: clamp(2rem, 11cqi, 4rem); }
+    .hero h1 span { display: block; }
     .hero-summary, .work-links { grid-template-columns: 1fr; }
     .hero-summary .intro { grid-column: 1; }
     .hero-summary .actions { grid-row: auto; }
@@ -539,6 +549,7 @@ main > .reading:last-child, main > .contact:last-child { margin-bottom: clamp(1.
 .catalog-card:hover img, .catalog-card:focus-visible img { filter: grayscale(.15); }
 .catalog-apps-art {
     grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
     padding: clamp(.75rem, 3vw, 2rem);
 }
 .catalog-apps-art img { grid-area: 1 / 1; }
@@ -556,6 +567,7 @@ main > .reading:last-child, main > .contact:last-child { margin-bottom: clamp(1.
     margin-right: 7%;
     transform: translateY(8%) rotate(7deg);
 }
+.catalog-reports-art { grid-template-rows: minmax(0, 1fr); }
 .catalog-reports-art img {
     width: 80%;
     max-height: 78%;
@@ -615,4 +627,28 @@ main > .reading:last-child, main > .contact:last-child { margin-bottom: clamp(1.
 }
 @media (prefers-reduced-motion: reduce) {
     .contact-card { transition: none; }
+}
+
+/* Keep long labels and nested cards inside their available column. */
+.card, .card-body, .app-card-body, .contact-card > div, .catalog-copy > div,
+.page-lead-summary > *, .hero-summary > *, .study > *, .resume-header h2 {
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
+}
+.skills li { max-inline-size: 100%; overflow-wrap: anywhere; }
+.screenshot-grid img { height: auto; }
+.hero-slide:focus-visible { outline-offset: -3px; z-index: 1; }
+
+@media (max-width: 42rem) {
+    .nav { gap: .6rem; }
+    .nav-links { width: 100%; column-gap: .15rem; row-gap: .15rem; }
+    .nav-links a { font-size: .9rem; padding-inline: .5rem; }
+    .page-lead h1 { font-size: clamp(2rem, 9vw, 3.5rem); }
+}
+@media (max-width: 23rem) {
+    .hero, .page-lead, .reading { padding-inline: .8rem; }
+    .hero-slide { aspect-ratio: 4 / 3; }
+    .hero-slide-title { font-size: clamp(1.05rem, 6vw, 1.35rem); }
+    .hero-showcase-label { font-size: .75rem; }
+    .other-work-content { padding-inline: .55rem; }
 }
