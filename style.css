@@ -677,3 +677,95 @@ main > .reading:last-child, main > .contact:last-child { margin-bottom: clamp(1.
 }
 .engineering-gallery a:hover { border-color: var(--accent); }
 .engineering-gallery img { width: 100%; max-height: 24rem; object-fit: contain; }
+
+/* Dark glass surfaces share a soft rim, a cool highlight, and a readable tint. */
+:root {
+    --glass-radius: clamp(1rem, 2.2vw, 1.75rem);
+    --glass-rim: #e9edf13d;
+    --glass-sheen: linear-gradient(145deg, #e3ebf419, transparent 53%);
+    --glass-tint: #24272de0;
+    --glass-shadow: inset 0 1px 0 #f2f7ff29, inset 0 -1px 0 #e9edf10d, 0 .8rem 2rem #0005;
+}
+
+body {
+    background:
+        radial-gradient(ellipse at 15% 6%, #40464e 0, transparent 44rem),
+        radial-gradient(ellipse at 92% 34%, #2c3039 0, transparent 42rem),
+        #151619;
+}
+
+.hero, .page-lead, .card, .catalog-card, .contact-card, .reading,
+.study, .other-work-details, .resume {
+    border: 1px solid var(--glass-rim);
+    border-radius: var(--glass-radius);
+    background: var(--glass-sheen), var(--glass-tint);
+    box-shadow: var(--glass-shadow);
+}
+
+.hero, .page-lead {
+    background:
+        radial-gradient(ellipse at 20% 0%, #d9e2ef21, transparent 67%),
+        linear-gradient(160deg, #51565c38, #1b1e26a8 72%),
+        #24272dd4;
+}
+
+@supports (backdrop-filter: blur(1px)) {
+    .hero, .page-lead, .resume {
+        backdrop-filter: blur(18px) saturate(115%);
+    }
+}
+
+.catalog-art {
+    border-start-start-radius: calc(var(--glass-radius) - 1px);
+    border-start-end-radius: calc(var(--glass-radius) - 1px);
+    background: radial-gradient(ellipse at 44% 0%, #59616b65, transparent 75%), #181a20ad;
+}
+
+.hero-device {
+    border-radius: 1rem;
+    border-color: #d7e2f268;
+    background: linear-gradient(150deg, #a7afba85, #232831e8 44%, #111318f5);
+    box-shadow: inset 0 1px 0 #fff5, 0 .9rem 2.35rem #0009;
+}
+.hero-slide { border-radius: .6rem; }
+
+a.card:hover, a.card:focus-visible, .catalog-card:hover, .catalog-card:focus-visible,
+.contact-card:hover, .contact-card:focus-visible {
+    border-color: #e8f0ff92;
+    background: linear-gradient(145deg, #e1ecfc27, transparent 68%), #2d323ae8;
+    color: var(--ink);
+}
+
+.button {
+    border-radius: .7rem;
+    border-color: #e8edf34a;
+    background: linear-gradient(180deg, #e5ecf418, #e5ecf406);
+    box-shadow: inset 0 1px 0 #fff2, 0 2px 6px #0003;
+}
+.button.primary {
+    border-color: #f3f7ff;
+    background: linear-gradient(180deg, #fafbff, #cbd2de);
+    color: #181b22;
+}
+.button.primary:hover { background: #f9faff; }
+
+.resume {
+    background: linear-gradient(145deg, #353c47df, #1d2027ed 72%);
+    box-shadow: var(--glass-shadow), 0 1.5rem 4rem #0009;
+    scrollbar-color: #727985 #292e37;
+}
+.resume-header {
+    border-bottom-color: #e9edf12b;
+    background: linear-gradient(135deg, #424953, #2b3039);
+}
+.resume::backdrop { background: #101218a8; backdrop-filter: blur(6px); }
+
+@media (prefers-reduced-transparency: reduce) {
+    .hero, .page-lead, .card, .catalog-card, .contact-card, .reading,
+    .study, .other-work-details, .resume {
+        --glass-tint: #23262c;
+        background-color: var(--glass-tint);
+        backdrop-filter: none;
+    }
+    .resume::backdrop { background: #12141a; backdrop-filter: none; }
+}
