@@ -1,0 +1,5 @@
+mastervolume 1
+musicvolume 0.5
+sfxvolume 0.5
+fullscreen 0
+muteall 1

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#222326">
+    <title>Play BitBlast | Wesley Tan</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .game-stage { position: relative; margin-block: 1rem 1.5rem; background: #0b0c0e; }
+        .game-stage canvas { display: block; width: 100%; height: auto; }
+        .game-stage #text { position: absolute; inset: 0; pointer-events: none; }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to game</a>
+    <main id="main" class="wrap">
+        <div class="page-lead">
+            <a class="back" href="../../bitblast.html">Back to BitBlast</a>
+            <h1>Play BitBlast</h1>
+            <p class="intro">Select Multiplayer in the game menu to find a match. The first player to arrive opens a room automatically.</p>
+        </div>
+        <section class="section reading" aria-labelledby="game-title">
+            <h2 id="game-title">Game display</h2>
+            <p id="status" role="status">Loading the game…</p>
+            <button class="button primary" id="start" type="button" disabled>Start BitBlast</button>
+            <div class="game-stage">
+                <canvas id="canvas" width="1600" height="900" tabindex="0" aria-label="BitBlast game display"></canvas>
+                <canvas id="text" width="1600" height="900" aria-hidden="true"></canvas>
+            </div>
+            <h3 id="controls-title">Controls</h3>
+            <dl class="game-controls" aria-labelledby="controls-title">
+                <div><dt><kbd>A</kbd> <kbd>D</kbd></dt><dd>Move left and right</dd></div>
+                <div><dt><kbd>W</kbd> <kbd>S</kbd></dt><dd>Raise and lower the turret</dd></div>
+                <div><dt><kbd>Q</kbd> <kbd>E</kbd></dt><dd>Decrease and increase shot power</dd></div>
+                <div><dt><kbd>Space</kbd></dt><dd>Fire the selected missile</dd></div>
+                <div><dt><kbd>Left Shift</kbd></dt><dd>Rocket jump</dd></div>
+                <div><dt><kbd>1</kbd>–<kbd>5</kbd></dt><dd>Select Standard, Cluster, Sticky Bomb, Rain, or Bounce</dd></div>
+                <div><dt><kbd>T</kbd> <kbd>Enter</kbd></dt><dd>Open multiplayer chat and send a message</dd></div>
+                <div><dt><kbd>Esc</kbd></dt><dd>Close chat or open the in-game menu</dd></div>
+            </dl>
+        </section>
+    </main>
+    <script>
+        const display = document.querySelector('#canvas');
+        const status = document.querySelector('#status');
+        const start = document.querySelector('#start');
+        var Module = {
+            canvas: display,
+            noInitialRun: true,
+            onRuntimeInitialized() {
+                start.disabled = false;
+                status.textContent = 'Ready to start.';
+                start.addEventListener('click', () => {
+                    start.hidden = true;
+                    display.focus();
+                    status.textContent = 'Click the game display to use the keyboard.';
+                    Module.callMain([]);
+                }, { once: true });
+            },
+            onAbort() {
+                start.disabled = true;
+                status.textContent = 'BitBlast could not start. Reload the page to try again.';
+            },
+        };
+    </script>
+    <script async src="index.js"></script>
+</body>
+</html>
