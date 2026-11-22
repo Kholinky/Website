@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#222326">
+    <meta name="description" content="Wesley Tan Yan Long’s software and game development portfolio.">
+    <title>Play BitBlast | Wesley Tan Yan Long</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="play.css">
+    <script type="module" src="play.mjs"></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <nav class="wrap nav" aria-label="Main navigation">
+            <a class="brand" href="../../index.html"><span class="monogram" aria-hidden="true">W</span> Wesley Tan</a>
+            <ul class="nav-links">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../projects.html" aria-current="true">Projects</a></li>
+                <li><a href="../../about.html">About</a></li>
+                <li><a href="../../contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main" class="wrap">
+        <header class="page-lead">
+            <a class="back" href="../../bitblast.html">Back to BitBlast</a>
+            <h1>Play BitBlast</h1>
+            <div class="page-lead-summary"><p class="intro">A browser adaptation of the original turn-based artillery game.</p></div>
+        </header>
+        <section class="section reading" aria-labelledby="game-display">
+            <h2 id="game-display">Game display</h2>
+            <div class="actions">
+                <button type="button" class="button primary" data-mode="local" disabled>Local two-player</button>
+                <button type="button" class="button" id="restart" hidden>Restart match</button>
+            </div>
+            <details class="online-setup">
+                <summary>Online two-player</summary>
+                <ol>
+                    <li>Player 1 creates an offer and sends the code to Player 2 privately.</li>
+                    <li>Player 2 pastes the offer, selects <strong>Answer offer</strong>, then sends the generated answer back.</li>
+                    <li>Player 1 pastes that answer and selects <strong>Connect</strong>.</li>
+                </ol>
+                <div class="actions">
+                    <button type="button" class="button" data-mode="host" disabled>Create offer</button>
+                    <button type="button" class="button" data-mode="join" disabled>Answer offer</button>
+                    <button type="button" class="button" data-mode="connect" disabled>Connect</button>
+                </div>
+                <label for="response">Code from the other player</label>
+                <textarea id="response" rows="2" spellcheck="false"></textarea>
+                <label for="code">Your connection code</label>
+                <textarea id="code" rows="2" readonly spellcheck="false"></textarea>
+                <button type="button" class="button" id="copy-code">Copy code</button>
+                <p>Online play uses a direct peer connection. Some school, office, or carrier networks may block it.</p>
+            </details>
+            <p id="connection" role="status">Loading WebAssembly physics…</p>
+            <canvas id="arena" width="960" height="540" tabindex="0" aria-label="BitBlast arena. Click to focus keyboard controls."></canvas>
+            <p id="turn"></p>
+            <h3>Controls</h3>
+            <p>Click the arena to focus it, or use the buttons below.</p>
+            <dl class="game-controls">
+                <div><dt><kbd>A</kbd> <kbd>D</kbd></dt><dd>Move left or right</dd></div>
+                <div><dt><kbd>W</kbd> <kbd>S</kbd></dt><dd>Raise or lower aim</dd></div>
+                <div><dt><kbd>Q</kbd> <kbd>E</kbd></dt><dd>Decrease or increase shot power</dd></div>
+                <div><dt><kbd>Left Shift</kbd> <kbd>Space</kbd></dt><dd>Rocket jump or fire</dd></div>
+                <div><dt><kbd>1</kbd> to <kbd>5</kbd></dt><dd>Select Standard, Cluster, Sticky Bomb, Rain, or Bounce</dd></div>
+            </dl>
+            <div class="actions touch-controls" aria-label="On-screen controls">
+                <button type="button" class="button" data-key="a">Left</button>
+                <button type="button" class="button" data-key="d">Right</button>
+                <button type="button" class="button" data-key="w">Aim up</button>
+                <button type="button" class="button" data-key="s">Aim down</button>
+                <button type="button" class="button" data-key="q">Less power</button>
+                <button type="button" class="button" data-key="e">More power</button>
+                <button type="button" class="button" data-key="shift">Jump</button>
+                <button type="button" class="button" data-key=" ">Fire</button>
+                <button type="button" class="button" data-key="1">Standard</button>
+                <button type="button" class="button" data-key="2">Cluster</button>
+                <button type="button" class="button" data-key="3">Sticky Bomb</button>
+                <button type="button" class="button" data-key="4">Rain</button>
+                <button type="button" class="button" data-key="5">Bounce</button>
+            </div>
+        </section>
+    </main>
+    <footer class="wrap footer">
+        <small>© 2026 Wesley Tan Yan Long</small>
+        <div class="actions">
+            <a href="https://github.com/Kholinky">GitHub</a>
+            <a href="https://www.linkedin.com/in/wesleychaimongkhol/">LinkedIn</a>
+        </div>
+    </footer>
+</body>
+</html>
