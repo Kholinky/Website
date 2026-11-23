@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "include": [
+    "/apps/a-quiet-shift/Build/WebBuild.data.br",
+    "/apps/a-quiet-shift/Build/WebBuild.framework.js.br",
+    "/apps/a-quiet-shift/Build/WebBuild.wasm.br"
+  ],
+  "exclude": []
+}
