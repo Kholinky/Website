@@ -780,7 +780,9 @@ a.card:hover, a.card:focus-visible, .catalog-card:hover, .catalog-card:focus-vis
     font-weight: 820;
     letter-spacing: -.05em;
 }
-.cover-bitblast { background: linear-gradient(150deg, #52503e, #211d15 61%, #141310); }
+.cover-game { background: #0b1221; }
+.cover-game img { width: 100%; }
+.bitblast-play .cover-game img { height: 100%; min-height: 0; object-fit: contain; }
 .cover-a-quiet-shift { background: radial-gradient(ellipse at 70% 5%, #43504c, #141d1a 58%, #0c100f); }
 .cover-food {
     grid-template-columns: repeat(2, minmax(0, 1fr));
