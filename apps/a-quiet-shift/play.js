@@ -66,3 +66,6 @@ function showError(message) {
     progress.hidden = true;
     status.textContent = message || 'The game could not load. Reload the page to try again.';
 }
+
+start.disabled = false;
+microphone.disabled = false;
