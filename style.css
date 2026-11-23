@@ -837,3 +837,32 @@ main > .cover-title { margin-bottom: 1rem; max-height: 17rem; border-radius: var
 .game-controls > div { padding: .65rem .8rem; border: 1px solid var(--line); border-radius: .65rem; }
 .game-controls dd { margin: .4rem 0 0; color: var(--muted); overflow-wrap: anywhere; }
 .game-controls kbd { display: inline-block; padding: .05rem .4rem; border: 1px solid var(--glass-rim); border-radius: .25rem; }
+
+/* Preserve the full phone screen inside the landscape project frames. */
+.runi-preview {
+    position: relative;
+    isolation: isolate;
+    grid-template-rows: minmax(0, 1fr);
+    background: #15191e;
+}
+.runi-preview::before {
+    content: "";
+    position: absolute;
+    inset: -1rem;
+    z-index: -1;
+    background: url("images/runi/route-progress.jpg") center / cover no-repeat;
+    filter: blur(18px) brightness(.35);
+    pointer-events: none;
+}
+.runi-preview > img,
+.runi-preview.has-cover .project-cover img {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: contain;
+}
+.runi-preview.has-cover .project-cover { grid-template-rows: minmax(0, 1fr); }
+.runi-preview[data-preview-images] > img {
+    width: calc(100% - 1.2rem);
+    height: calc(100% - 1.2rem);
+}

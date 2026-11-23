@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#222326">
-    <meta name="description" content="Wesley Tan Yan Long’s software and game development portfolio.">
+    <meta name="description" content="Runi is a cross-platform running app in development. Explore the C++20 core, Android build, and Jenkins pipeline.">
     <title>Runi | Wesley Tan Yan Long</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -27,18 +27,32 @@
             <p class="eyebrow">C++20 / Cross-platform development · 2026</p>
             <h1>Runi</h1>
             <div class="page-lead-summary">
-                <p class="intro">A running app with a portable C++ core and automated builds across four targets.</p>
+                <p class="intro">A cross-platform running app prototype with GPS route tracking and comparisons against recorded runs.</p>
+                <span class="play-status">Work in progress</span>
             </div>
         </div>
-        <div class="project-cover cover-title cover-runi" aria-hidden="true"><span>Runi</span></div>
+        <div class="project-cover project-screenshot-cover runi-preview"><img src="images/runi/route-progress.jpg" width="384" height="848" alt="Runi route test with GPS status, run progress, and ghost markers" decoding="async"></div>
         <section class="section reading" aria-labelledby="contribution">
             <h2 id="contribution">My contribution</h2>
-            <p>I separated the fixed-timestep update loop from rendering and wrote six headless doctest scenarios. I configured Jenkins for Linux desktop, Android, the Go backend, and project tools. A CMake check prevents the core from depending on system timing.</p>
-
+            <h3>C++ core and headless tests</h3>
+            <p>I set up the repository and CMake builds, pinned dependencies, and documented a C++20 core API for input, fixed-timestep updates, and interpolated render state. I added a check to keep platform and clock headers out of the core. Six doctest scenarios run without a display and cover input, interpolation, determinism, and long-run stability. I verified that the tests caught a deliberate regression.</p>
+            <h3>Desktop rendering and input</h3>
+            <p>I used SDL3 for the window, input, and OpenGL context, and built the renderer and shaders for a rotating triangle prototype. I added a 60 Hz simulation loop, keyboard and touch controls, and an in-app debug overlay that reports timing, platform, and build information.</p>
+            <h3>Android build and device testing</h3>
+            <p>I connected Gradle to the shared CMake build for ARM64 and tested the OpenGL ES 3.0 prototype on a Pixel 9a. I adjusted touch input and display scaling for the phone and handled backgrounding and resume in the platform layer.</p>
+            <h3>Jenkins and build standards</h3>
+            <p>I configured Jenkins to build and test Linux desktop, Android, the Go backend, and project tools. I verified that a failing check blocked a GitHub pull request and that merging the fix triggered a clean build. I also set C++ naming rules with clang-tidy.</p>
+            <p>The CI plan also includes broader sanitizer, data, API, and tool checks, along with nightly performance tracking.</p>
         </section>
         <section class="section reading" aria-labelledby="project-media">
-            <h2 id="project-media">Media</h2>
-            <p class="app-preview media-pending">Screenshot and demo video pending.</p>
+            <h2 id="project-media">Development screenshots</h2>
+            <div class="grid project-grid screenshot-grid">
+                <a href="images/runi/run-start.jpg"><img src="images/runi/run-start.jpg" width="384" height="848" alt="Runi tracking GPS and distance at the start of a test run" loading="lazy" decoding="async"></a>
+                <a href="images/runi/pace-tracking.jpg"><img src="images/runi/pace-tracking.jpg" width="384" height="848" alt="Live pace and route progress alongside three comparison markers" loading="lazy" decoding="async"></a>
+                <a href="images/runi/ghost-comparison.jpg"><img src="images/runi/ghost-comparison.jpg" width="384" height="848" alt="Personal-best, previous-run, and downloaded ghost markers on the route map" loading="lazy" decoding="async"></a>
+                <a href="images/runi/route-progress.jpg"><img src="images/runi/route-progress.jpg" width="384" height="848" alt="Route progress and relative times midway through a Runi test" loading="lazy" decoding="async"></a>
+                <a href="images/runi/route-finish.jpg"><img src="images/runi/route-finish.jpg" width="384" height="848" alt="The live route near the end of the recording, with completed comparison runs" loading="lazy" decoding="async"></a>
+            </div>
         </section>
     </main>
     <footer class="wrap footer">
