@@ -782,8 +782,8 @@ a.card:hover, a.card:focus-visible, .catalog-card:hover, .catalog-card:focus-vis
 }
 .cover-game { background: #0b1221; }
 .cover-game img { width: 100%; }
-.bitblast-play .cover-game img { height: 100%; min-height: 0; object-fit: contain; }
-.cover-a-quiet-shift { background: radial-gradient(ellipse at 70% 5%, #43504c, #141d1a 58%, #0c100f); }
+.bitblast-play .cover-game img, .project-screenshot-cover img { height: 100%; min-height: 0; object-fit: contain; }
+
 .cover-food {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: minmax(0, 1fr);
@@ -821,7 +821,7 @@ main > .cover-title { margin-bottom: 1rem; max-height: 17rem; border-radius: var
     .has-cover .project-cover { transition: none; }
 }
 
-.bitblast-play .project-cover {
+.bitblast-play .project-cover, .project-screenshot-cover {
     margin-bottom: 1rem;
     max-height: 24rem;
     border: 1px solid var(--glass-rim);
